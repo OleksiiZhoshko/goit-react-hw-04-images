@@ -1,23 +1,22 @@
-import { Component } from 'react';
+import { useEffect } from 'react';
 
-export class Modal extends Component {
+const Modal = ({ largeImg, onClose }) => {
+  useEffect(() => {
+
+    const onCloseByEscape = e => {
+      if (e.code === 'Escape') {
+        onClose()
+      }
+    }
+
+    window.addEventListener('keydown', onCloseByEscape)
+
+    return () => {
+      window.removeEventListener('keydown', onCloseByEscape);
+    }
     
-    componentDidMount() {
-        window.addEventListener('keydown', this.onCloseByEscape)
-    }
+  }, [onClose]);
 
-    componentWillUnmount() {
-        window.removeEventListener('keydown',this.onCloseByEscape)
-    }
-
-    onCloseByEscape = e => {
-        if(e.code === 'Escape') {
-        this.props.onClose()
-    }
-}
-
-    render() {
-        const { largeImg, onClose } = this.props;
     return (
       <div className="Overlay" onClick={onClose}>
         <div className="Modal">
@@ -25,7 +24,6 @@ export class Modal extends Component {
         </div>
       </div>
     );
-  }
 };
 
 export default Modal;

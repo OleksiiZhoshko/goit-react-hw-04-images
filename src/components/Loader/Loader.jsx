@@ -1,5 +1,5 @@
 import { CirclesWithBar } from "react-loader-spinner"
-export const Loader = () => {
+const Loader = () => {
     return (
         <CirclesWithBar
   height="100"
@@ -16,4 +16,4 @@ export const Loader = () => {
     )
 }
 
-export default Loader
+export default Loader;

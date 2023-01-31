@@ -1,4 +1,4 @@
-export const Searchbar =({onSubmit})=>{
+const Searchbar =({onSubmit})=>{
 
   const hendleSubmit = e => {
     e.preventDefault()    
